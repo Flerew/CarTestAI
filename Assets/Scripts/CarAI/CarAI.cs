@@ -1,102 +1,67 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
-using Unity.VisualScripting;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 
 public class CarAI : MonoBehaviour
 {
-    [SerializeField] private List<Vector3> _paths = null;
-    [SerializeField] private float _arriveDistance = 3f;
-    [SerializeField] private float _lastPointArriveDistance = 1f;
-    [SerializeField] private float _turningAngleOffset = 5f;
-    [SerializeField] private Vector3 _currentTargetPosition;
+    public GameObject drivePoint;
+    public bool canChangeDrivePoint = true;
+    public bool driveOnRightWay;
 
-    private int _index = 0;
+    private NavMeshAgent agent;
 
-    private bool _stop;
-    public bool Stop 
+    private void Awake()
     {
-        get { return _stop; }
-        set { _stop = value; }
+        agent = GetComponent<NavMeshAgent>();
     }
 
-    [field: SerializeField]
-    public UnityEvent<Vector2> OnDrive { get; set; }
-
-    private void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        if(_paths == null || _paths.Count == 0)
+        if(other.gameObject.TryGetComponent(out DrivePointController drivePointController))
         {
-            Stop = true;
-        }
-        else
-        {
-            _currentTargetPosition = _paths[_index];
+            SetNextDrivePoint(drivePointController);
         }
     }
 
-    public void SetPath(List<Vector3> paths)
+    public void SetNextDrivePoint(DrivePointController drivePointController)
     {
-        if(_paths.Count == 0)
+        if (driveOnRightWay == drivePointController.isRightDrivePoint)
         {
-            Destroy(gameObject); 
-        }
-        this._paths = paths;
-        _index = 0;
-        _currentTargetPosition = this._paths[_index];
-
-        Vector3 relativePoint = transform.InverseTransformPoint(this._paths[_index + 1]);
-
-        float angle = Mathf.Atan2(relativePoint.x, relativePoint.z) * Mathf.Rad2Deg;
-
-        transform.rotation = Quaternion.Euler(0, angle, 0);
-        Stop = false;
-    }
-
-    private void Update()
-    {
-        CheckIfArrived();
-        Drive();
-    }
-
-    private void Drive()
-    {
-        if(Stop)
-        {
-            //OnDrive?.Invoke
-        }
-    }
-
-    private void CheckIfArrived()
-    {
-        if(Stop == false)
-        {
-            float distanceToCheck = _arriveDistance;
-            if(_index == _paths.Count - 1 )
+            if (drivePointController.nextDrivePoints.Count > 0)
             {
-                distanceToCheck = _lastPointArriveDistance;
+                List<GameObject> points = drivePointController.nextDrivePoints;
+                drivePoint = points[Random.Range(0, points.Count)];
+                SetAgentPoint(drivePoint);
+                canChangeDrivePoint = false;
             }
-            if(Vector3.Distance(_currentTargetPosition, transform.position) < distanceToCheck)
+            else
             {
-                SetNextTargetIndex();
+                canChangeDrivePoint = true;
             }
         }
     }
 
-    private void SetNextTargetIndex()
+    public void SetDrivePoint(GameObject point, DrivePointController drivePointController)
     {
-        _index++;
-        if(_index >= _paths.Count)
+        if (drivePointController.nextDrivePoints.Count > 0)
         {
-            Stop = true;
-            Destroy(gameObject);
+            canChangeDrivePoint = false;
+
+            SetAgentPoint(point);
         }
-        else
+
+        if (canChangeDrivePoint)
         {
-            _currentTargetPosition = _paths[_index];
+            Debug.Log(point.name);
+
+            SetAgentPoint(point);
         }
+    }
+
+    private void SetAgentPoint(GameObject point)
+    {
+        drivePoint = point;
+        agent.destination = point.transform.position;
     }
 }
