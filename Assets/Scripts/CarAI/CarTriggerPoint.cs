@@ -10,13 +10,18 @@ public class CarTriggerPoint : MonoBehaviour
     private void Awake()
     {
         carAI = GetComponentInParent<CarAI>();
-        driveOnRightWay = carAI.driveOnRightWay;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.TryGetComponent(out DrivePointController drivePointController))
+        SetNextDrivePoint(other);
+    }
+
+    private void SetNextDrivePoint(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out DrivePointController drivePointController))
         {
+            driveOnRightWay = carAI.driveOnRightWay;
             if (driveOnRightWay == drivePointController.isRightDrivePoint)
             {
                 GameObject drivePoint = other.gameObject;

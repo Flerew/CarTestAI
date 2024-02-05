@@ -10,10 +10,12 @@ public class CarAI : MonoBehaviour
     public bool driveOnRightWay;
 
     private NavMeshAgent agent;
+    private Rigidbody rb;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,12 +35,28 @@ public class CarAI : MonoBehaviour
                 List<GameObject> points = drivePointController.nextDrivePoints;
                 drivePoint = points[Random.Range(0, points.Count)];
                 SetAgentPoint(drivePoint);
-                canChangeDrivePoint = false;
+                CheckNextDrivePoint(drivePoint);
             }
             else
             {
                 canChangeDrivePoint = true;
             }
+        }
+    }
+
+    private void CheckNextDrivePoint(GameObject nextDrivePoint)
+    {
+        if (drivePoint.TryGetComponent(out DrivePointController nextDrivePointController))
+        {
+            if (nextDrivePointController.nextDrivePoints.Count == 0)
+            {
+                canChangeDrivePoint = true;
+            }
+            else
+            {
+                canChangeDrivePoint = false;
+            }
+            driveOnRightWay = nextDrivePointController.isRightDrivePoint;
         }
     }
 
@@ -53,8 +71,6 @@ public class CarAI : MonoBehaviour
 
         if (canChangeDrivePoint)
         {
-            Debug.Log(point.name);
-
             SetAgentPoint(point);
         }
     }
