@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextDrivePoints:
   - {fileID: 4067334384895246545}
+  isRightDrivePoint: 1
 --- !u!1 &4006126582022091752
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextDrivePoints:
   - {fileID: 4671600468854025737}
+  isRightDrivePoint: 0
 --- !u!1 &4067334384895246545
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextDrivePoints: []
+  isRightDrivePoint: 1
 --- !u!1 &4671600468854025737
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextDrivePoints: []
+  isRightDrivePoint: 0
 --- !u!1 &5039366116246556418
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,3 +404,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextDrivePoints:
   - {fileID: 4006126582022091752}
+  isRightDrivePoint: 0
