@@ -22,11 +22,13 @@ public class CarTriggerPoint : MonoBehaviour
         if (other.gameObject.TryGetComponent(out DrivePointController drivePointController))
         {
             driveOnRightWay = carAI.driveOnRightWay;
-            if (driveOnRightWay == drivePointController.isRightDrivePoint)
+            bool canChangeDrivePoint = carAI.canChangeDrivePoint;
+
+            if (driveOnRightWay == drivePointController.isRightDrivePoint && canChangeDrivePoint)
             {
                 GameObject drivePoint = other.gameObject;
 
-                carAI.SetDrivePoint(drivePoint, drivePointController);
+                carAI.SetDrivePoint(drivePoint);
             }
         }
     }

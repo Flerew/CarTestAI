@@ -18,35 +18,23 @@ public class CarAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.gameObject.TryGetComponent(out DrivePointController drivePointController))
+    //    {
+    //        SetNextDrivePoint(drivePointController);
+    //    }
+    //}
+
+    public void SetNextDrivePoint(GameObject nextDrivePoint, bool isRightDrivePoint)
     {
-        if(other.gameObject.TryGetComponent(out DrivePointController drivePointController))
-        {
-            SetNextDrivePoint(drivePointController);
-        }
+        SetAgentPoint(nextDrivePoint);
+        driveOnRightWay = isRightDrivePoint;
     }
 
-    public void SetNextDrivePoint(DrivePointController drivePointController)
+    public void CheckNextDrivePoint(GameObject nextDrivePoint)
     {
-        if (driveOnRightWay == drivePointController.isRightDrivePoint)
-        {
-            if (drivePointController.nextDrivePoints.Count > 0)
-            {
-                List<GameObject> points = drivePointController.nextDrivePoints;
-                drivePoint = points[Random.Range(0, points.Count)];
-                SetAgentPoint(drivePoint);
-                CheckNextDrivePoint(drivePoint);
-            }
-            else
-            {
-                canChangeDrivePoint = true;
-            }
-        }
-    }
-
-    private void CheckNextDrivePoint(GameObject nextDrivePoint)
-    {
-        if (drivePoint.TryGetComponent(out DrivePointController nextDrivePointController))
+        if (nextDrivePoint.TryGetComponent(out DrivePointController nextDrivePointController))
         {
             if (nextDrivePointController.nextDrivePoints.Count == 0)
             {
@@ -60,22 +48,26 @@ public class CarAI : MonoBehaviour
         }
     }
 
-    public void SetDrivePoint(GameObject point, DrivePointController drivePointController)
+    public void SetDrivePoint(GameObject point)
     {
-        if (drivePointController.nextDrivePoints.Count > 0)
+        if (point.TryGetComponent(out DrivePointController drivePointController))
         {
-            canChangeDrivePoint = false;
+            Debug.Log(drivePointController.nextDrivePoints.Count);
+            if (drivePointController.nextDrivePoints.Count > 0)
+            {
+                canChangeDrivePoint = false;
 
-            SetAgentPoint(point);
-        }
+                SetAgentPoint(point);
+            }
 
-        if (canChangeDrivePoint)
-        {
-            SetAgentPoint(point);
+            if (canChangeDrivePoint)
+            {
+                SetAgentPoint(point);
+            }
         }
     }
 
-    private void SetAgentPoint(GameObject point)
+    public void SetAgentPoint(GameObject point)
     {
         drivePoint = point;
         agent.destination = point.transform.position;
