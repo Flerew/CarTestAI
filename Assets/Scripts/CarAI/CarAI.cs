@@ -5,26 +5,29 @@ using UnityEngine.AI;
 
 public class CarAI : MonoBehaviour
 {
+    public float stopDistanceAgainstCar = 10f;
     public GameObject drivePoint;
     public bool canChangeDrivePoint = true;
     public bool driveOnRightWay;
+    public GameObject frontCar;
 
     private NavMeshAgent agent;
     private Rigidbody rb;
+    private float defaultAgentSpeed;
+    private float defaultAgentAngularSpeed;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
+        defaultAgentSpeed = agent.speed;
+        defaultAgentAngularSpeed = agent.angularSpeed;
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.gameObject.TryGetComponent(out DrivePointController drivePointController))
-    //    {
-    //        SetNextDrivePoint(drivePointController);
-    //    }
-    //}
+    private void FixedUpdate()
+    {
+        rb.velocity = Vector3.zero;
+    }
 
     public void SetNextDrivePoint(GameObject nextDrivePoint, bool isRightDrivePoint)
     {
@@ -52,7 +55,6 @@ public class CarAI : MonoBehaviour
     {
         if (point.TryGetComponent(out DrivePointController drivePointController))
         {
-            Debug.Log(drivePointController.nextDrivePoints.Count);
             if (drivePointController.nextDrivePoints.Count > 0)
             {
                 canChangeDrivePoint = false;
@@ -65,6 +67,40 @@ public class CarAI : MonoBehaviour
                 SetAgentPoint(point);
             }
         }
+    }
+
+    public void CheckAnotherCarDistance(Collider other)
+    {
+        if (other == null)
+        {
+            SetAgentSpeeds(defaultAgentSpeed, defaultAgentAngularSpeed);
+        }
+
+        else
+        {
+            GameObject car = other.gameObject;
+
+            if (car.tag == "Car" || car.tag == "Player" && car == frontCar)
+            {
+
+                float distance = Vector3.Distance(transform.position, car.transform.position);
+                if (distance > stopDistanceAgainstCar)
+                {
+                    SetAgentSpeeds(defaultAgentSpeed, defaultAgentAngularSpeed);
+                }
+                else if (distance <= stopDistanceAgainstCar)
+                {
+                    SetAgentSpeeds(0, 0);
+                }
+
+            }
+        }
+    }
+
+    private void SetAgentSpeeds(float agentSpeed, float agentAngularSpeed)
+    {
+        agent.speed = agentSpeed;
+        agent.angularSpeed = agentAngularSpeed;
     }
 
     public void SetAgentPoint(GameObject point)

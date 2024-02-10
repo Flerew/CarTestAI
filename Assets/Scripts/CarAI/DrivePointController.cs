@@ -21,7 +21,6 @@ public class DrivePointController : MonoBehaviour
                 if (nextDrivePoints.Count > 0)
                 {
                     GameObject nextDrivePoint = nextDrivePoints[Random.Range(0, nextDrivePoints.Count)];
-                    Debug.Log(nextDrivePoint.name);
                     carAI.CheckNextDrivePoint(nextDrivePoint);
                     carAI.SetDrivePoint(nextDrivePoint);
                 }
