@@ -429,9 +429,9 @@ GameObject:
   - component: {fileID: 8597791735560085164}
   - component: {fileID: 5955502397097360720}
   - component: {fileID: 1811668255887722328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vehicle_SUV_color01_separate
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -509,7 +509,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
+  m_Speed: 0
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 180
@@ -533,9 +533,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0fb68ba0c5d3c74f807d619034ccee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopDistanceAgainstCar: 10
   drivePoint: {fileID: 0}
   canChangeDrivePoint: 1
   driveOnRightWay: 0
+  frontCar: {fileID: 0}
 --- !u!1 &2123354496540130669
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,9 +549,9 @@ GameObject:
   - component: {fileID: 2280764232924687848}
   - component: {fileID: 9182478200861758992}
   - component: {fileID: 8078220703828816424}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BumperTriggerPoints
-  m_TagString: Untagged
+  m_TagString: CarBumberTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

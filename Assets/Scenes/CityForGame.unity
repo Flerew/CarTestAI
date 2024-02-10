@@ -198,18 +198,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 50013935, guid: e1697ef5073defa458e40968ffff2b30, type: 3}
-      propertyPath: driveOnRightWay
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 50013935, guid: e1697ef5073defa458e40968ffff2b30, type: 3}
-      propertyPath: stopDistanceAgainstCar
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 50013935, guid: e1697ef5073defa458e40968ffff2b30, type: 3}
-      propertyPath: startStopDistanceAgainstCar
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1697ef5073defa458e40968ffff2b30, type: 3}
 --- !u!1 &280969678 stripped
@@ -228,21 +216,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vehicle_Car_color01_separate
       objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
-      propertyPath: m_TagString
-      value: Car
-      objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 56.67
+      value: 157.26
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -250,11 +230,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 41.3
+      value: 116.3
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
       propertyPath: m_LocalRotation.x
@@ -262,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
       propertyPath: m_LocalRotation.z
@@ -274,39 +254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3326523158202510043, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6708437866317965812, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 270
-      objectReference: {fileID: 0}
-    - target: {fileID: 7025990311920665896, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
-      propertyPath: driveOnRightWay
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7025990311920665896, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
-      propertyPath: stopDistanceAgainstCar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7025990311920665896, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
-      propertyPath: startStopDistanceAgainstCar
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 9038977525478384781, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9038977525478384781, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
-      propertyPath: m_TagString
-      value: CarBumberTrigger
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d267fbb9e36c6e4458c9a8756d725a79, type: 3}
@@ -361,14 +313,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vehicle_SUV_color01_separate
       objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 1dabf884aa0716149a1bc775f0b620d8, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 1dabf884aa0716149a1bc775f0b620d8, type: 3}
-      propertyPath: m_TagString
-      value: Car
-      objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 1dabf884aa0716149a1bc775f0b620d8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -413,25 +357,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2123354496540130669, guid: 1dabf884aa0716149a1bc775f0b620d8, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2123354496540130669, guid: 1dabf884aa0716149a1bc775f0b620d8, type: 3}
-      propertyPath: m_TagString
-      value: CarBumberTrigger
+    - target: {fileID: 1811668255887722328, guid: 1dabf884aa0716149a1bc775f0b620d8, type: 3}
+      propertyPath: driveOnRightWay
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5955502397097360720, guid: 1dabf884aa0716149a1bc775f0b620d8, type: 3}
       propertyPath: m_Speed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5955502397097360720, guid: 1dabf884aa0716149a1bc775f0b620d8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8529380416932125578, guid: 1dabf884aa0716149a1bc775f0b620d8, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dabf884aa0716149a1bc775f0b620d8, type: 3}
@@ -521,8 +453,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724264636}
-  m_LocalRotation: {x: -0.34936416, y: 0.6262918, z: -0.35105678, w: -0.6020485}
-  m_LocalPosition: {x: 82.096085, y: 46.522774, z: 30.419334}
+  m_LocalRotation: {x: -0.34544656, y: 0.622387, z: -0.3364164, w: -0.6165429}
+  m_LocalPosition: {x: 78.71653, y: 35.495907, z: 32.233894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

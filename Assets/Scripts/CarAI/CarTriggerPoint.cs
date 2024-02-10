@@ -22,7 +22,6 @@ public class CarTriggerPoint : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        RememberFrontCar(other.gameObject);
         carAI.CheckAnotherCarDistance(other);
     }
 

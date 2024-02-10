@@ -494,7 +494,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!65 &50013938
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -533,9 +533,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0fb68ba0c5d3c74f807d619034ccee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopDistanceAgainstCar: 17
   drivePoint: {fileID: 0}
   canChangeDrivePoint: 1
   driveOnRightWay: 1
+  frontCar: {fileID: 0}
 --- !u!1 &1790671561
 GameObject:
   m_ObjectHideFlags: 0
